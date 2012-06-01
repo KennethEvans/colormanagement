@@ -1,4 +1,4 @@
-package ui;
+package net.kenevans.colormanagement.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -27,7 +27,8 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
-import misc.AboutBoxEvansPanel;
+import net.kenevans.colormanagement.misc.AboutBoxEvansPanel;
+import net.kenevans.colormanagement.model.ICCProfileModel;
 import net.kenevans.imagemodel.ImageModel;
 import net.kenevans.imagemodel.ScrolledImagePanel;
 import net.kenevans.imagemodel.utils.Utils;
@@ -41,8 +42,6 @@ import org.apache.sanselan.common.ImageMetadata.Item;
 import org.apache.sanselan.formats.tiff.TiffImageMetadata;
 import org.apache.sanselan.icc.IccProfileInfo;
 import org.apache.sanselan.icc.IccProfileParser;
-
-import testicc.TestICC;
 
 /**
  * SanselanImageViewer: A program to read ICC profiles.<br>
@@ -567,9 +566,12 @@ public class SanselanImageViewer extends JFrame
             info += "  Embedded Profile: null" + LS;
             return info;
         }
-        info += "  Embedded Profile: " + TestICC.getProfileName(profile) + LS;
+        ICCProfileModel profileModel = new ICCProfileModel();
+        profileModel.setProfile(profile);
+
+        info += "  Embedded Profile: " + profileModel.getProfileName() + LS;
         info += "  Rendering Intent: "
-            + TestICC.getRenderingIntent(profile.getData()) + LS;
+            + ICCProfileModel.getRenderingIntent(profile.getData()) + LS;
         info += "  Version: " + profile.getMajorVersion() + "."
             + profile.getMinorVersion() + LS;
 
@@ -655,7 +657,7 @@ public class SanselanImageViewer extends JFrame
      */
     public static void main1(String[] args) {
         final File file = new File(FILENAME);
-        //        final SanselanImageViewer app = new SanselanImageViewer();
+        // final SanselanImageViewer app = new SanselanImageViewer();
 
         System.out.print(file.getPath() + LS + LS);
 

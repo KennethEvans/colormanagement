@@ -1,4 +1,4 @@
-package ui;
+package net.kenevans.colormanagement.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -30,8 +30,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import misc.AboutBoxEvansPanel;
-import model.ICCProfileModel;
+import net.kenevans.colormanagement.misc.AboutBoxEvansPanel;
+import net.kenevans.colormanagement.model.ICCProfileModel;
 import net.kenevans.imagemodel.utils.Utils;
 
 import org.jfree.chart.ChartFactory;

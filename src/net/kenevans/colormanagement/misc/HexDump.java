@@ -1,4 +1,4 @@
-package misc;
+package net.kenevans.colormanagement.misc;
 
 public class HexDump
 {

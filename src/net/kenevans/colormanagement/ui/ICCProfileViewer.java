@@ -1,4 +1,4 @@
-package ui;
+package net.kenevans.colormanagement.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -17,8 +17,8 @@ import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
-import misc.AboutBoxEvansPanel;
-import model.ICCProfileModel;
+import net.kenevans.colormanagement.misc.AboutBoxEvansPanel;
+import net.kenevans.colormanagement.model.ICCProfileModel;
 import net.kenevans.imagemodel.utils.Utils;
 import net.kenevans.jfreechart.jfreechartutils.PlotXY;
 

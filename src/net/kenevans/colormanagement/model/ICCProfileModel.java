@@ -1,4 +1,4 @@
-package model;
+package net.kenevans.colormanagement.model;
 
 import java.awt.color.ICC_Profile;
 import java.awt.color.ICC_ProfileRGB;
@@ -10,7 +10,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import misc.HexDump;
+import net.kenevans.colormanagement.misc.HexDump;
 import net.kenevans.imagemodel.utils.Utils;
 
 public class ICCProfileModel

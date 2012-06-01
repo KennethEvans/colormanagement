@@ -1,4 +1,4 @@
-package misc;
+package net.kenevans.colormanagement.misc;
 
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
