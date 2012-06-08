@@ -74,6 +74,9 @@ public class SanselanImageViewer extends JFrame
     private String defaultPath = "C:/users/evans/Pictures";
     private File file;
 
+    /** URL for online help. */
+    private static final String HELP_URL = "http://kenevans.net";
+
     private Container contentPane = this.getContentPane();
     private JTextArea textArea;
     private JPanel displayPanel = new JPanel();
@@ -187,6 +190,20 @@ public class SanselanImageViewer extends JFrame
         menu = new JMenu();
         menu.setText("Help");
         menuBar.add(menu);
+
+        menuItem = new JMenuItem();
+        menuItem.setText("Contents");
+        menuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                try {
+                    java.awt.Desktop.getDesktop().browse(
+                        java.net.URI.create(HELP_URL));
+                } catch(IOException ex) {
+                    Utils.excMsg("Cannot open help contents", ex);
+                }
+            }
+        });
+        menu.add(menuItem);
 
         menuItem = new JMenuItem();
         menuItem.setText("About");

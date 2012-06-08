@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -39,6 +40,10 @@ public class ICCProfileViewer extends JFrame
     // private static final String DEFAULT_PROFILE =
     // "C:/Windows/System32/spool/drivers/color/xRite-2010-07-08-6500-2.2-090.ICC";
 
+    /** URL for online help. */
+//    private static final String HELP_URL = "file:///C:/Users/evans/Documents/Web%20Pages/Local/localHomePage.html";
+    private static final String HELP_URL = "http://kenevans.net";
+
     private String defaultPath = "C:/Windows/System32/spool/drivers/color";
     // private String defaultPath =
     // "C:/Users/evans/Documents/Visual Studio Projects/Xcalib";
@@ -65,28 +70,28 @@ public class ICCProfileViewer extends JFrame
         // enough space for 5 rows and 30 columns.
         textArea = new JTextArea(25, 30);
         textArea.setEditable(false);
-//        // DEBUG
-//        String lafName = UIManager.getSystemLookAndFeelClassName();
-//        Font font = textArea.getFont();
-//        System.out.println("JTextArea:");
-//        System.out.println("  Name: " + font.getName());
-//        System.out.println("  FontName: " + font.getFontName());
-//        System.out.println("  Family: " + font.getFamily());
-//        System.out.println("  Size: " + font.getSize());
-//        System.out.println("  Style: " + font.getStyle());
-//        System.out.println("  LAF Name: " + lafName);
-//        String[] keys = {"TextArea.font", "Dialog.font"};
-//        for(String key : keys) {
-//            System.out.println("  Key: " + key);
-//            Font uiFont = UIManager.getFont(key);
-//            if(uiFont != null) {
-//                System.out.println("    Name: " + uiFont.getName());
-//                System.out.println("    FontName: " + uiFont.getFontName());
-//                System.out.println("    Family: " + uiFont.getFamily());
-//                System.out.println("    Size: " + uiFont.getSize());
-//                System.out.println("    Style: " + uiFont.getStyle());
-//            }
-//        }
+        // // DEBUG
+        // String lafName = UIManager.getSystemLookAndFeelClassName();
+        // Font font = textArea.getFont();
+        // System.out.println("JTextArea:");
+        // System.out.println("  Name: " + font.getName());
+        // System.out.println("  FontName: " + font.getFontName());
+        // System.out.println("  Family: " + font.getFamily());
+        // System.out.println("  Size: " + font.getSize());
+        // System.out.println("  Style: " + font.getStyle());
+        // System.out.println("  LAF Name: " + lafName);
+        // String[] keys = {"TextArea.font", "Dialog.font"};
+        // for(String key : keys) {
+        // System.out.println("  Key: " + key);
+        // Font uiFont = UIManager.getFont(key);
+        // if(uiFont != null) {
+        // System.out.println("    Name: " + uiFont.getName());
+        // System.out.println("    FontName: " + uiFont.getFontName());
+        // System.out.println("    Family: " + uiFont.getFamily());
+        // System.out.println("    Size: " + uiFont.getSize());
+        // System.out.println("    Style: " + uiFont.getStyle());
+        // }
+        // }
         JScrollPane scrollPane = new JScrollPane(textArea);
         this.add(scrollPane, BorderLayout.CENTER);
     }
@@ -145,6 +150,20 @@ public class ICCProfileViewer extends JFrame
         menu = new JMenu();
         menu.setText("Help");
         menuBar.add(menu);
+
+        menuItem = new JMenuItem();
+        menuItem.setText("Contents");
+        menuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                try {
+                    java.awt.Desktop.getDesktop().browse(
+                        java.net.URI.create(HELP_URL));
+                } catch(IOException ex) {
+                    Utils.excMsg("Cannot open help contents", ex);
+                }
+            }
+        });
+        menu.add(menuItem);
 
         menuItem = new JMenuItem();
         menuItem.setText("About");

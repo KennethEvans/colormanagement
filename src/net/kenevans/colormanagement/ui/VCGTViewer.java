@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -63,6 +64,9 @@ public class VCGTViewer extends JFrame
     // "C:/Users/evans/Pictures/ImageBrowser Test/BGR-Wcs-RBG-Icc-Test.icc";
     // private static final String DEFAULT_PROFILE =
     // "C:/Windows/System32/spool/drivers/color/xRite-2010-07-08-6500-2.2-090.ICC";
+
+    /** URL for online help. */
+    private static final String HELP_URL = "http://kenevans.net";
 
     private String defaultPath = "C:/Windows/System32/spool/drivers/color";
     // private String defaultPath =
@@ -181,47 +185,61 @@ public class VCGTViewer extends JFrame
         menuBar = new JMenuBar();
 
         // File
-        JMenu menuFile = new JMenu();
-        menuFile.setText("File");
-        menuBar.add(menuFile);
+        JMenu menu = new JMenu();
+        menu.setText("File");
+        menuBar.add(menu);
 
         // File Open
-        JMenuItem menuFileOpen = new JMenuItem();
-        menuFileOpen.setText("Open...");
-        menuFileOpen.addActionListener(new ActionListener() {
+        JMenuItem menuItem = new JMenuItem();
+        menuItem.setText("Open...");
+        menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 open();
             }
         });
-        menuFile.add(menuFileOpen);
+        menu.add(menuItem);
 
         JSeparator separator = new JSeparator();
-        menuFile.add(separator);
+        menu.add(separator);
 
         // File Exit
-        JMenuItem menuFileExit = new JMenuItem();
-        menuFileExit.setText("Exit");
-        menuFileExit.addActionListener(new ActionListener() {
+        menuItem = new JMenuItem();
+        menuItem.setText("Exit");
+        menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 quit();
             }
         });
-        menuFile.add(menuFileExit);
+        menu.add(menuItem);
 
         // Help
-        JMenu menuHelp = new JMenu();
-        menuHelp.setText("Help");
-        menuBar.add(menuHelp);
+        menu = new JMenu();
+        menu.setText("Help");
+        menuBar.add(menu);
 
-        JMenuItem menuHelpAbout = new JMenuItem();
-        menuHelpAbout.setText("About");
-        menuHelpAbout.addActionListener(new ActionListener() {
+        menuItem = new JMenuItem();
+        menuItem.setText("Contents");
+        menuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                try {
+                    java.awt.Desktop.getDesktop().browse(
+                        java.net.URI.create(HELP_URL));
+                } catch(IOException ex) {
+                    Utils.excMsg("Cannot open help contents", ex);
+                }
+            }
+        });
+        menu.add(menuItem);
+
+        menuItem = new JMenuItem();
+        menuItem.setText("About");
+        menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 JOptionPane.showMessageDialog(null, new AboutBoxEvansPanel(
                     title), "About", JOptionPane.PLAIN_MESSAGE);
             }
         });
-        menuHelp.add(menuHelpAbout);
+        menu.add(menuItem);
     }
 
     /**
