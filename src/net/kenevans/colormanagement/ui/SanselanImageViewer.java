@@ -588,16 +588,11 @@ public class SanselanImageViewer extends JFrame
         ICCProfileModel profileModel = new ICCProfileModel();
         profileModel.setProfile(profile);
 
-        // These seem to always get a NullPointerException
+        // These were getting a NullPointerException (now fixed)
         try {
             info += "  Embedded Profile: " + profileModel.getProfileName() + LS;
         } catch(Exception ex) {
             info += "  Embedded Profile: Error getting profile name" + LS;
-        }
-        try {
-            info += "  Display Name: " + profileModel.getDisplayName() + LS;
-        } catch(Exception ex) {
-            info += "  Display Name: Error getting display name" + LS;
         }
         info += "  Rendering Intent: "
             + ICCProfileModel.getRenderingIntent(profile.getData()) + LS;
