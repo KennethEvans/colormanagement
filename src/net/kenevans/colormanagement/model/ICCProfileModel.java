@@ -100,6 +100,9 @@ public class ICCProfileModel
      */
     public void setProfile(ICC_Profile profile) {
         this.profile = profile;
+        this.data = profile.getData();
+        // Make the tags array
+        makeFileTagsArray();
     }
 
     /**

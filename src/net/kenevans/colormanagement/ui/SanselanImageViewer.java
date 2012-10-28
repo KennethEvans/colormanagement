@@ -350,6 +350,8 @@ public class SanselanImageViewer extends JFrame
                     String msg = "Error loading file: " + file.getPath();
                     final String fullMsg = msg + LS + "Exception: " + ex + LS
                         + ex.getMessage();
+                    // DEBUG
+                    ex.printStackTrace();
                     // Utils.excMsg(msg, ex);
                     appendText(LS + fullMsg);
                 } catch(Error err) {
@@ -586,7 +588,17 @@ public class SanselanImageViewer extends JFrame
         ICCProfileModel profileModel = new ICCProfileModel();
         profileModel.setProfile(profile);
 
-        info += "  Embedded Profile: " + profileModel.getProfileName() + LS;
+        // These seem to always get a NullPointerException
+        try {
+            info += "  Embedded Profile: " + profileModel.getProfileName() + LS;
+        } catch(Exception ex) {
+            info += "  Embedded Profile: Error getting profile name" + LS;
+        }
+        try {
+            info += "  Display Name: " + profileModel.getDisplayName() + LS;
+        } catch(Exception ex) {
+            info += "  Display Name: Error getting display name" + LS;
+        }
         info += "  Rendering Intent: "
             + ICCProfileModel.getRenderingIntent(profile.getData()) + LS;
         info += "  Version: " + profile.getMajorVersion() + "."
