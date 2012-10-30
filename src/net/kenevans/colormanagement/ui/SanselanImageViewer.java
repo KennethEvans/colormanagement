@@ -53,11 +53,7 @@ import org.apache.sanselan.icc.IccProfileParser;
  */
 public class SanselanImageViewer extends JFrame
 {
-    private static final String FILENAME = "C:/users/evans/Pictures/ImageBrowser Test/D7A_0670.jpg";
-    // private static final String FILENAME =
-    // "C:/users/evans/Pictures/ImageBrowser Test/Breault2.ProPhoto.jpg";
-    // private static final String FILENAME =
-    // "C:/users/evans/Pictures/Digital Photos/Better/DSC_5895a.jpg";
+    private static final String FILENAME = "C:/users/evans/Pictures/Image Tests/ICC Profile/D7A_0670.jpg";
 
     public static final boolean USE_GUI = true;
     public static final boolean USE_START_FILE_NAME = true;
@@ -257,7 +253,7 @@ public class SanselanImageViewer extends JFrame
     /**
      * Puts the panel in a JFrame and runs the JFrame.
      */
-    public void run() {
+    public void run(String fileName) {
         try {
             // Create and set up the window.
             // JFrame.setDefaultLookAndFeelDecorated(true);
@@ -273,9 +269,28 @@ public class SanselanImageViewer extends JFrame
             // Display the window
             this.setBounds(20, 20, WIDTH, HEIGHT);
             this.setVisible(true);
-            if(USE_START_FILE_NAME) {
-                File file = new File(FILENAME);
+            if(fileName == null) {
+                if(USE_START_FILE_NAME) {
+                    File file = new File(FILENAME);
+                    loadFile(file);
+                    // Save the selected path for next time
+                    File parent = file.getParentFile();
+                    if(parent != null && parent.exists()) {
+                        defaultPath = parent.getPath();
+                    } else if(file != null && file.exists()) {
+                        defaultPath = file.getPath();
+                    }
+                }
+            } else {
+                File file = new File(fileName);
                 loadFile(file);
+                // Save the selected path for next time
+                File parent = file.getParentFile();
+                if(parent != null && parent.exists()) {
+                    defaultPath = parent.getPath();
+                } else if(file != null && file.exists()) {
+                    defaultPath = file.getPath();
+                }
             }
         } catch(Throwable t) {
             Utils.excMsg("Error running SanselanImageViewer", t);
@@ -719,12 +734,13 @@ public class SanselanImageViewer extends JFrame
      */
     public static void main(String[] args) {
         final SanselanImageViewer app = new SanselanImageViewer();
+        final String fileName = args.length == 0 ? null : args[0];
 
         // Make the job run in the AWT thread
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 if(app != null) {
-                    app.run();
+                    app.run(fileName);
                 }
             }
         });
