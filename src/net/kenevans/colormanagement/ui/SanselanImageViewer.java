@@ -1,12 +1,16 @@
 package net.kenevans.colormanagement.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Rectangle;
 import java.awt.color.ICC_Profile;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -78,7 +82,7 @@ public class SanselanImageViewer extends JFrame
     private JPanel displayPanel = new JPanel();
     private JPanel textPanel = new JPanel();
     private JPanel mainPanel = new JPanel();
-    private ScrolledImagePanel imagePanel = null;
+    private ScrolledImagePanel imagePanel;
     private JSplitPane mainPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
         displayPanel, textPanel);
     private JMenuBar menuBar;
@@ -98,7 +102,43 @@ public class SanselanImageViewer extends JFrame
         // Display panel
         displayPanel.setLayout(new BorderLayout());
         displayPanel.setPreferredSize(new Dimension(WIDTH, HEIGHT / 2));
-        imagePanel = new ScrolledImagePanel(imageModel, USE_STATUS_BAR);
+        // Make an ImagePanel but override the
+        imagePanel = new ScrolledImagePanel(imageModel, USE_STATUS_BAR) {
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            protected void mouseDragged(MouseEvent ev) {
+                if(dragging) {
+                    mouseCur = ev.getPoint();
+                    Rectangle newRectangle = new Rectangle();
+                    newRectangle.setFrameFromDiagonal(mouseStart, mouseCur);
+                    setClipRectangle(newRectangle);
+                    if(useStatusBar || statusBar != null || getImage() == null) {
+                        int x = (int)(ev.getX() / zoom);
+                        int y = (int)(ev.getY() / zoom);
+                        int width = (int)(newRectangle.width / zoom);
+                        int height = (int)(newRectangle.height / zoom);
+                        String text = "x=" + x + " y=" + y + " [ " + width
+                            + " x " + height + " ]";
+                        updateStatus(text);
+                    }
+                } else {
+                    mouseMoved(ev);
+                }
+            }
+
+            @Override
+            protected void mouseMoved(MouseEvent ev) {
+                if(useStatusBar || statusBar != null || getImage() == null) {
+                    int x = (int)(ev.getX() / zoom);
+                    int y = (int)(ev.getY() / zoom);
+                    String text = "x=" + x + " y=" + y + " "
+                        + getColorString(x, y);
+                    updateStatus(text);
+                }
+            }
+
+        };
         displayPanel.add(imagePanel);
 
         // Create the text area used for output. Request
@@ -687,6 +727,29 @@ public class SanselanImageViewer extends JFrame
             Utils.excMsg("Error getting embedded profile", ex);
             return;
         }
+    }
+
+    /**
+     * Gets the color of the point at x, y in the currentImage as (rrr, ggg,
+     * bbb).
+     * 
+     * @param x
+     * @param y
+     * @return
+     */
+    public String getColorString(int x, int y) {
+        if(imageModel == null || imageModel.getCurrentImage() == null) {
+            return "";
+        }
+        BufferedImage image = imageModel.getCurrentImage();
+        if(image == null || x < 0 || x >= image.getWidth() || y < 0
+            || y >= image.getHeight()) {
+            return "";
+        }
+        int rgbColor = image.getRGB(x, y);
+        Color color = new Color(rgbColor);
+        return String.format("(%3d, %3d, %3d)", color.getRed(),
+            color.getGreen(), color.getBlue());
     }
 
     /**
