@@ -102,7 +102,7 @@ public class SanselanImageViewer extends JFrame
         // Display panel
         displayPanel.setLayout(new BorderLayout());
         displayPanel.setPreferredSize(new Dimension(WIDTH, HEIGHT / 2));
-        // Make an ImagePanel but override the
+        // Make an ImagePanel but override writing the status
         imagePanel = new ScrolledImagePanel(imageModel, USE_STATUS_BAR) {
             private static final long serialVersionUID = 1L;
 
