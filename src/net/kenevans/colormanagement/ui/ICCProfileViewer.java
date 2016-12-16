@@ -34,6 +34,8 @@ public class ICCProfileViewer extends JFrame
     private static final String TITLE = "ICC Profile Viewer";
     // private static final String DEFAULT_PROFILE =
     // "C:/Windows/System32/spool/drivers/color/AlienwareCustom.icm";
+    // private static final String DEFAULT_PROFILE =
+    // "C:/Windows/System32/spool/drivers/color/Cosmos-2016-12-13-ColorMunki.icm";
     private static final String DEFAULT_PROFILE = "C:/Windows/System32/spool/drivers/color/xRite-2012-05-04-6500-2.2-090.icc";
     // private static final String DEFAULT_PROFILE =
     // "C:/Users/evans/Pictures/ImageBrowser Test/BGR-Wcs-RBG-Icc-Test.icc";
@@ -41,7 +43,8 @@ public class ICCProfileViewer extends JFrame
     // "C:/Windows/System32/spool/drivers/color/xRite-2010-07-08-6500-2.2-090.ICC";
 
     /** URL for online help. */
-//    private static final String HELP_URL = "file:///C:/Users/evans/Documents/Web%20Pages/Local/localHomePage.html";
+    // private static final String HELP_URL =
+    // "file:///C:/Users/evans/Documents/Web%20Pages/Local/localHomePage.html";
     private static final String HELP_URL = "http://kenevans.net";
 
     private String defaultPath = "C:/Windows/System32/spool/drivers/color";
@@ -74,22 +77,22 @@ public class ICCProfileViewer extends JFrame
         // String lafName = UIManager.getSystemLookAndFeelClassName();
         // Font font = textArea.getFont();
         // System.out.println("JTextArea:");
-        // System.out.println("  Name: " + font.getName());
-        // System.out.println("  FontName: " + font.getFontName());
-        // System.out.println("  Family: " + font.getFamily());
-        // System.out.println("  Size: " + font.getSize());
-        // System.out.println("  Style: " + font.getStyle());
-        // System.out.println("  LAF Name: " + lafName);
+        // System.out.println(" Name: " + font.getName());
+        // System.out.println(" FontName: " + font.getFontName());
+        // System.out.println(" Family: " + font.getFamily());
+        // System.out.println(" Size: " + font.getSize());
+        // System.out.println(" Style: " + font.getStyle());
+        // System.out.println(" LAF Name: " + lafName);
         // String[] keys = {"TextArea.font", "Dialog.font"};
         // for(String key : keys) {
-        // System.out.println("  Key: " + key);
+        // System.out.println(" Key: " + key);
         // Font uiFont = UIManager.getFont(key);
         // if(uiFont != null) {
-        // System.out.println("    Name: " + uiFont.getName());
-        // System.out.println("    FontName: " + uiFont.getFontName());
-        // System.out.println("    Family: " + uiFont.getFamily());
-        // System.out.println("    Size: " + uiFont.getSize());
-        // System.out.println("    Style: " + uiFont.getStyle());
+        // System.out.println(" Name: " + uiFont.getName());
+        // System.out.println(" FontName: " + uiFont.getFontName());
+        // System.out.println(" Family: " + uiFont.getFamily());
+        // System.out.println(" Size: " + uiFont.getSize());
+        // System.out.println(" Style: " + uiFont.getStyle());
         // }
         // }
         JScrollPane scrollPane = new JScrollPane(textArea);
@@ -156,8 +159,8 @@ public class ICCProfileViewer extends JFrame
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 try {
-                    java.awt.Desktop.getDesktop().browse(
-                        java.net.URI.create(HELP_URL));
+                    java.awt.Desktop.getDesktop()
+                        .browse(java.net.URI.create(HELP_URL));
                 } catch(IOException ex) {
                     Utils.excMsg("Cannot open help contents", ex);
                 }
@@ -169,8 +172,9 @@ public class ICCProfileViewer extends JFrame
         menuItem.setText("About");
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                JOptionPane.showMessageDialog(null, new AboutBoxEvansPanel(
-                    TITLE), "About", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null,
+                    new AboutBoxEvansPanel(TITLE), "About",
+                    JOptionPane.PLAIN_MESSAGE);
             }
         });
         menu.add(menuItem);
@@ -338,7 +342,7 @@ public class ICCProfileViewer extends JFrame
         // String infoString = profileModel.getInfo();
         // String[] tokens = infoString.split(LS);
         // for(String token : tokens) {
-        // info += "  " + token + LS;
+        // info += " " + token + LS;
         // }
         info += profileModel.getInfo() + LS;
         appendText(info);

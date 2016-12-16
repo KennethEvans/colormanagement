@@ -59,7 +59,13 @@ public class VCGTViewer extends JFrame
     private static final String title = "ICC VCGT Table Viewer";
     // private static final String DEFAULT_PROFILE =
     // "C:/Windows/System32/spool/drivers/color/AlienwareCustom.icm";
-    private static final String DEFAULT_PROFILE = "C:/Windows/System32/spool/drivers/color/xRite-2012-05-04-6500-2.2-090.icc";
+    // private static final String DEFAULT_PROFILE =
+    // "C:/Windows/System32/spool/drivers/color/Display-2016-12-12.icc";
+    // private static final String DEFAULT_PROFILE =
+    // "C:/Windows/System32/spool/drivers/color/Cosmos-2016-12-13-ColorMunki.icm";
+    private static final String DEFAULT_PROFILE = "C:/Windows/System32/spool/drivers/color/K1NFP-170CT #1 2016-12-14 20-25 2.2 F-S XYZLUT+MTX.icm";
+    // private static final String DEFAULT_PROFILE =
+    // "C:/Windows/System32/spool/drivers/color/xRite-2012-05-04-6500-2.2-090.icc";
     // private static final String DEFAULT_PROFILE =
     // "C:/Users/evans/Pictures/ImageBrowser Test/BGR-Wcs-RBG-Icc-Test.icc";
     // private static final String DEFAULT_PROFILE =
@@ -222,8 +228,8 @@ public class VCGTViewer extends JFrame
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 try {
-                    java.awt.Desktop.getDesktop().browse(
-                        java.net.URI.create(HELP_URL));
+                    java.awt.Desktop.getDesktop()
+                        .browse(java.net.URI.create(HELP_URL));
                 } catch(IOException ex) {
                     Utils.excMsg("Cannot open help contents", ex);
                 }
@@ -235,8 +241,9 @@ public class VCGTViewer extends JFrame
         menuItem.setText("About");
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                JOptionPane.showMessageDialog(null, new AboutBoxEvansPanel(
-                    title), "About", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null,
+                    new AboutBoxEvansPanel(title), "About",
+                    JOptionPane.PLAIN_MESSAGE);
             }
         });
         menu.add(menuItem);
@@ -353,7 +360,7 @@ public class VCGTViewer extends JFrame
             false, // Show Legend
             false, // Use tooltips
             false // Configure chart to generate URLs?
-            );
+        );
         // XYLineAndShapeRenderer renderer = (XYLineAndShapeRenderer)chart
         // .getXYPlot().getRenderer();
         // if(nComponents == 1) {
@@ -453,21 +460,21 @@ public class VCGTViewer extends JFrame
                 }
                 dataset.addSeries(series);
                 if(nComponents == 1) {
-                    renderer.setSeriesPaint(seriesStart, new Color(val, val,
-                        val));
+                    renderer.setSeriesPaint(seriesStart,
+                        new Color(val, val, val));
                 } else {
                     switch(i) {
                     case 0:
-                        renderer.setSeriesPaint(seriesStart, new Color(val, 0,
-                            0));
+                        renderer.setSeriesPaint(seriesStart,
+                            new Color(val, 0, 0));
                         break;
                     case 1:
-                        renderer.setSeriesPaint(seriesStart + 1, new Color(0,
-                            val, 0));
+                        renderer.setSeriesPaint(seriesStart + 1,
+                            new Color(0, val, 0));
                         break;
                     case 2:
-                        renderer.setSeriesPaint(seriesStart + 2, new Color(0,
-                            0, val));
+                        renderer.setSeriesPaint(seriesStart + 2,
+                            new Color(0, 0, val));
                         break;
                     }
                 }
