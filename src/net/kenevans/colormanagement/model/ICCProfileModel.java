@@ -390,6 +390,9 @@ public class ICCProfileModel
      * @return
      */
     private byte[] getTagData(String signature) {
+        if(tagsArray == null) {
+            return null;
+        }
         byte[] bytes = null;
         // Find the tag in the tagsArray
         for(TagTableEntry entry : tagsArray) {

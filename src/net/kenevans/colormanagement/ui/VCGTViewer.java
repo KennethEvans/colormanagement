@@ -31,10 +31,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import net.kenevans.colormanagement.misc.AboutBoxEvansPanel;
-import net.kenevans.colormanagement.model.ICCProfileModel;
-import net.kenevans.imagemodel.utils.Utils;
-
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -43,6 +39,10 @@ import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
+
+import net.kenevans.colormanagement.misc.AboutBoxEvansPanel;
+import net.kenevans.colormanagement.model.ICCProfileModel;
+import net.kenevans.imagemodel.utils.Utils;
 
 /**
  * A viewer to view the Vcgt tables for several profiles simultaneously.
@@ -92,8 +92,8 @@ public class VCGTViewer extends JFrame
 
     private Container contentPane = this.getContentPane();
     private JPanel listPanel = new JPanel();
-    private DefaultListModel listModel = new DefaultListModel();
-    private JList list = new JList(listModel);
+    private DefaultListModel<Profile> listModel = new DefaultListModel<Profile>();
+    private JList<Profile> list = new JList<Profile>(listModel);
     private JScrollPane listScrollPane;
     private JPanel displayPanel = new JPanel();
     private ChartPanel chartPanel;
@@ -143,7 +143,7 @@ public class VCGTViewer extends JFrame
         list.setCellRenderer(new DefaultListCellRenderer() {
             private static final long serialVersionUID = 1L;
 
-            public Component getListCellRendererComponent(JList list,
+            public Component getListCellRendererComponent(JList<?> list,
                 Object value, int index, boolean isSelected,
                 boolean cellHasFocus) {
                 JLabel label = (JLabel)super.getListCellRendererComponent(list,
