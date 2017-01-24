@@ -106,6 +106,20 @@ public class ICCProfileModel
     }
 
     /**
+     * Gets the ICC_ProfileRGB if there is one.
+     * 
+     * @return ICC_ProfileRGB or null if there is not one
+     */
+    public ICC_ProfileRGB getProfileRGB() {
+        // Check if it is an RGB profile
+        if(!(profile instanceof ICC_ProfileRGB)) {
+            return null;
+        } else {
+            return (ICC_ProfileRGB)profile;
+        }
+    }
+
+    /**
      * @return The value of tagsArray.
      */
     public TagTableEntry[] getTagsArray() {
@@ -869,8 +883,8 @@ public class ICCProfileModel
             nEntries = dis.readShort();
             nSize = dis.readShort();
             if(nSize != 1 && nSize != 2) {
-                Utils.errMsg("Cannot handle table with entries of size "
-                    + nSize);
+                Utils.errMsg(
+                    "Cannot handle table with entries of size " + nSize);
                 return null;
             }
             table = new double[nChannels][nEntries];
@@ -1003,8 +1017,8 @@ public class ICCProfileModel
             input = (double)j / (double)(nEntries - 1);
             for(int i = 0; i < nChannels; i++) {
                 // Values in the range 0-255
-                table[i][j] = 255. * (min[i] + Math.pow(input, gamma[i])
-                    * (max[i] - min[i]));
+                table[i][j] = 255.
+                    * (min[i] + Math.pow(input, gamma[i]) * (max[i] - min[i]));
             }
         }
         return table;
@@ -1045,11 +1059,9 @@ public class ICCProfileModel
         info += "Manufacturer Model: " + getStringType(getTagData("dmdd")) + LS;
 
         // Check if it is an RGB profile
-        ICC_ProfileRGB iccRGB = null;
-        if(!(profile instanceof ICC_ProfileRGB)) {
+        ICC_ProfileRGB iccRGB = getProfileRGB();
+        if(iccRGB == null) {
             info += "ICC profile is not an RGB profile" + LS;
-        } else {
-            iccRGB = (ICC_ProfileRGB)profile;
         }
         int i, j;
         byte[] bytes;
@@ -1158,6 +1170,7 @@ public class ICCProfileModel
                     }
                     info += iccRGB.getGamma(i);
                 }
+                info += LS;
             } else {
                 short[] table;
                 info += "Tone Response Curve [TRC]: " + LS;
@@ -1177,10 +1190,9 @@ public class ICCProfileModel
                     } else {
                         for(short val : table) {
                             // These are really unsigned shorts, not shorts
-                            info += " "
-                                + String.format("%." + showTableValuesPrecision
-                                    + "f", (float)(val & 0xFFFF)
-                                    / (float)0xFFFF);
+                            info += " " + String.format(
+                                "%." + showTableValuesPrecision + "f",
+                                (float)(val & 0xFFFF) / (float)0xFFFF);
                         }
                     }
                     info += LS;
@@ -1240,8 +1252,8 @@ public class ICCProfileModel
                 if(params != null) {
                     info += "VCGT: " + LS;
                     info += "  Table:";
-                    info += " nChannels=" + params[0] + " nEntries="
-                        + params[1] + " nSize=" + params[2] + LS;
+                    info += " nChannels=" + params[0] + " nEntries=" + params[1]
+                        + " nSize=" + params[2] + LS;
                 }
                 table = getVcgtTable();
             } else {
@@ -1288,10 +1300,9 @@ public class ICCProfileModel
                             info += "[" + table[i].length + " values]";
                         } else {
                             for(j = 0; j < nEntries; j++) {
-                                info += " "
-                                    + String.format("%."
-                                        + showTableValuesPrecision + "f",
-                                        table[i][j]);
+                                info += " " + String.format(
+                                    "%." + showTableValuesPrecision + "f",
+                                    table[i][j]);
                             }
                         }
                         info += LS;

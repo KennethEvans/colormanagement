@@ -2,6 +2,8 @@ package net.kenevans.colormanagement.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.color.ICC_ProfileRGB;
+import java.awt.color.ProfileDataException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -150,6 +152,16 @@ public class ICCProfileViewer extends JFrame
         });
         menu.add(menuItem);
 
+        // Tools TRC
+        menuItem = new JMenuItem();
+        menuItem.setText("TRC Plot...");
+        menuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                plotTrc();
+            }
+        });
+        menu.add(menuItem);
+
         // Help
         menu = new JMenu();
         menu.setText("Help");
@@ -280,7 +292,7 @@ public class ICCProfileViewer extends JFrame
     }
 
     /**
-     * Plots the vgct curves.
+     * Plots the VCGT curves.
      */
     public void plotVcgt() {
         double[][] table = null;
@@ -327,6 +339,85 @@ public class ICCProfileViewer extends JFrame
         }
         // Change the axis limits to 0,255
         chart.getXYPlot().getRangeAxis().setRange(0, 255);
+        chart.getXYPlot().getDomainAxis().setRange(0, 255);
+        // String title = "VCGT Curves";
+        String title = profileModel.getDisplayName();
+        app.run(title);
+        JFrame frame = app.getFrame();
+        frame.setSize(new Dimension(WIDTH, WIDTH));
+    }
+
+    /**
+     * Plots the TRC curves.
+     */
+    public void plotTrc() {
+        // Check if it is an RGB profile
+        ICC_ProfileRGB iccRGB = profileModel.getProfileRGB();
+        if(iccRGB == null) {
+            Utils.errMsg("Is not an RGB profile so has no TRC");
+            return;
+        }
+        // See if it is Gamma or TRC
+        try {
+            iccRGB.getGamma(0);
+            Utils.errMsg("Has Gamma, not TRC");
+            return;
+        } catch(ProfileDataException ex) {
+            // Do nothing
+        }
+
+        // Check if there is a table
+        try {
+            short[] table = iccRGB.getTRC(0);
+            if(table == null) {
+                Utils.errMsg("TRC table is not available");
+                return;
+            }
+        } catch(ProfileDataException ex) {
+            Utils.errMsg("TRC table is not available");
+            return;
+        }
+        int nComponents = iccRGB.getNumComponents();
+        int nEntries = 0;
+        short shortVal;
+        double[][] yVals = new double[nComponents][];
+        double[][] xVals = null;
+        short[] table;
+        // black=0, red=1, green=2, blue=3
+        for(int i = 0; i < nComponents; i++) {
+            table = iccRGB.getTRC(i);
+            if(i == 0) {
+                nEntries = table.length;
+                xVals = new double[1][nEntries];
+            }
+            yVals[i] = new double[nEntries];
+            for(int j = 0; j < nEntries; j++) {
+                shortVal = table[j];
+                // These are really unsigned shorts, not shorts
+                yVals[i][j] = (float)(shortVal & 0xFFFF) / (float)0xFFFF;
+                // Fill in the x values from the first component
+                if(i == 0) {
+                    xVals[0][j] = 255.f * j / (nEntries - 1);
+                }
+            }
+        }
+
+        // Run the plot
+        final PlotXY app = new PlotXY("TRC Curves", "Input", "Output", xVals,
+            yVals);
+        // Change the default colors to red, green, blue in that order
+        JFreeChart chart = app.getChart();
+        XYLineAndShapeRenderer renderer = (XYLineAndShapeRenderer)chart
+            .getXYPlot().getRenderer();
+        if(nComponents == 1) {
+            renderer.setSeriesPaint(0, ChartColor.black);
+        } else {
+            renderer.setSeriesPaint(0, ChartColor.red);
+            renderer.setSeriesPaint(1, ChartColor.green);
+            renderer.setSeriesPaint(2, ChartColor.blue);
+        }
+        // Change the axis limits to 0,255
+        chart.getXYPlot().getRangeAxis().setRange(0, 1);
         chart.getXYPlot().getDomainAxis().setRange(0, 255);
         // String title = "VCGT Curves";
         String title = profileModel.getDisplayName();
