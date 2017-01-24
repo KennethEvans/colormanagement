@@ -2,44 +2,53 @@
 <project default="create_run_jar" name="Create Runnable Jar for Project net.kenevans.colormanagement with libraries in sub-folder">
     <!--this file was created by Eclipse Runnable JAR Export Wizard-->
     <!--ANT 1.7 is required                                        -->
+    <!--define folder properties-->
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="${dir.buildfile}/.."/>
+    <property name="dir.jarfile" value="C:/Deploy/VCGT Viewer"/>
     <target name="create_run_jar">
-        <jar destfile="C:/Deploy/Color Management/VGCTViewer.jar">
+        <jar destfile="${dir.jarfile}/VCGTViewer.jar">
             <manifest>
                 <attribute name="Main-Class" value="net.kenevans.colormanagement.ui.VCGTViewer"/>
-                <attribute name="Class-Path" value=". VGCTViewer_lib/sanselan-0.97-incubator.jar VGCTViewer_lib/org.eclipse.ui_3.7.0.v20110928-1505.jar VGCTViewer_lib/org.eclipse.swt_3.7.2.v3740f.jar VGCTViewer_lib/org.eclipse.swt.win32.win32.x86_3.7.2.v3740f.jar VGCTViewer_lib/org.eclipse.jface_3.7.0.v20110928-1505.jar VGCTViewer_lib/org.eclipse.core.commands_3.6.0.I20110111-0800.jar VGCTViewer_lib/org.eclipse.ui.workbench_3.7.1.v20120104-1859.jar VGCTViewer_lib/org.eclipse.core.runtime_3.7.0.v20110110.jar VGCTViewer_lib/org.eclipse.osgi_3.7.2.v20120110-1415.jar VGCTViewer_lib/org.eclipse.equinox.common_3.6.0.v20110523.jar VGCTViewer_lib/org.eclipse.core.jobs_3.5.101.v20120113-1953.jar VGCTViewer_lib/runtime_registry_compatibility.jar VGCTViewer_lib/org.eclipse.equinox.registry_3.5.101.R37x_v20110810-1611.jar VGCTViewer_lib/org.eclipse.equinox.preferences_3.4.2.v20120111-2020.jar VGCTViewer_lib/org.eclipse.core.contenttype_3.4.100.v20110423-0524.jar VGCTViewer_lib/org.eclipse.equinox.app_1.3.100.v20110321.jar VGCTViewer_lib/org.eclipse.core.resources_3.7.101.v20120125-1505.jar VGCTViewer_lib/gnujaxp.jar VGCTViewer_lib/iText-2.1.5.jar VGCTViewer_lib/jcommon-1.0.16.jar VGCTViewer_lib/jfreechart-1.0.13-experimental.jar VGCTViewer_lib/jfreechart-1.0.13-swt.jar VGCTViewer_lib/jfreechart-1.0.13.jar VGCTViewer_lib/junit.jar VGCTViewer_lib/servlet.jar VGCTViewer_lib/swtgraphics2d.jar VGCTViewer_lib/jfreechart-1.0.13-source.zip"/>
+                <attribute name="Class-Path" value=". VCGTViewer_lib/sanselan-0.97-incubator.jar VCGTViewer_lib/org.eclipse.ui_3.108.1.v20160929-1045.jar VCGTViewer_lib/org.eclipse.swt_3.105.2.v20161122-0613.jar VCGTViewer_lib/org.eclipse.swt.win32.win32.x86_3.105.2.v20161122-0613.jar VCGTViewer_lib/org.eclipse.jface_3.12.1.v20160923-1528.jar VCGTViewer_lib/org.eclipse.core.commands_3.8.0.v20160316-1921.jar VCGTViewer_lib/org.eclipse.ui.workbench_3.108.2.v20161025-2029.jar VCGTViewer_lib/org.eclipse.e4.ui.workbench3_0.13.100.v20160506-0759.jar VCGTViewer_lib/org.eclipse.core.runtime_3.12.0.v20160606-1342.jar VCGTViewer_lib/javax.inject_1.0.0.v20091030.jar VCGTViewer_lib/org.eclipse.osgi_3.11.2.v20161107-1947.jar VCGTViewer_lib/org.eclipse.osgi.compatibility.state_1.0.200.v20160504-1419.jar VCGTViewer_lib/org.eclipse.wst.jsdt.nashorn.extension_1.0.0.v201605131737.jar VCGTViewer_lib/org.eclipse.equinox.common_3.8.0.v20160509-1230.jar VCGTViewer_lib/org.eclipse.core.jobs_3.8.0.v20160509-0411.jar VCGTViewer_lib/org.eclipse.equinox.registry_3.6.100.v20160223-2218.jar VCGTViewer_lib/org.eclipse.equinox.preferences_3.6.1.v20160815-1406.jar VCGTViewer_lib/org.eclipse.core.contenttype_3.5.100.v20160418-1621.jar VCGTViewer_lib/org.eclipse.equinox.app_1.3.400.v20150715-1528.jar VCGTViewer_lib/org.eclipse.core.resources_3.11.1.v20161107-2032.jar VCGTViewer_lib/iText-2.1.5.jar VCGTViewer_lib/hamcrest-core-1.3.jar VCGTViewer_lib/jcommon-1.0.23.jar VCGTViewer_lib/jfreechart-1.0.19-experimental.jar VCGTViewer_lib/jfreechart-1.0.19-swt.jar VCGTViewer_lib/jfreechart-1.0.19.jar VCGTViewer_lib/jfreesvg-2.0.jar VCGTViewer_lib/junit-4.11.jar VCGTViewer_lib/orsoncharts-1.4-eval-nofx.jar VCGTViewer_lib/orsonpdf-1.6-eval.jar VCGTViewer_lib/servlet.jar VCGTViewer_lib/swtgraphics2d.jar"/>
             </manifest>
-            <fileset dir="C:/eclipseWorkspaces/Work/net.kenevans.colormanagement/bin"/>
-            <fileset dir="C:/eclipseWorkspaces/Work/net.kenevans.imagemodel/bin"/>
-            <fileset dir="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart.utils/bin"/>
+            <fileset dir="${dir.buildfile}/bin"/>
+            <fileset dir="${dir.workspace}/net.kenevans.imagemodel/bin"/>
+            <fileset dir="${dir.workspace}/net.kenevans.jfreechart.utils/bin"/>
         </jar>
-        <delete dir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <mkdir dir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.apache.sanselan/sanselan-0.97-incubator.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.ui_3.7.0.v20110928-1505.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.swt_3.7.2.v3740f.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.swt.win32.win32.x86_3.7.2.v3740f.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.jface_3.7.0.v20110928-1505.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.core.commands_3.6.0.I20110111-0800.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.ui.workbench_3.7.1.v20120104-1859.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.core.runtime_3.7.0.v20110110.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.osgi_3.7.2.v20120110-1415.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.equinox.common_3.6.0.v20110523.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.core.jobs_3.5.101.v20120113-1953.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.core.runtime.compatibility.registry_3.5.0.v20110505/runtime_registry_compatibility.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.equinox.registry_3.5.101.R37x_v20110810-1611.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.equinox.preferences_3.4.2.v20120111-2020.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.core.contenttype_3.4.100.v20110423-0524.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.equinox.app_1.3.100.v20110321.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.core.resources_3.7.101.v20120125-1505.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart/gnujaxp.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart/iText-2.1.5.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart/jcommon-1.0.16.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart/jfreechart-1.0.13-experimental.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart/jfreechart-1.0.13-swt.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart/jfreechart-1.0.13.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart/junit.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart/servlet.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart/swtgraphics2d.jar" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart/jfreechart-1.0.13-source.zip" todir="C:/Deploy/Color Management/VGCTViewer_lib"/>
+        <delete dir="${dir.jarfile}/VCGTViewer_lib"/>
+        <mkdir dir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.apache.sanselan/sanselan-0.97-incubator.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.ui_3.108.1.v20160929-1045.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.swt_3.105.2.v20161122-0613.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.swt.win32.win32.x86_3.105.2.v20161122-0613.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.jface_3.12.1.v20160923-1528.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.core.commands_3.8.0.v20160316-1921.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.ui.workbench_3.108.2.v20161025-2029.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.e4.ui.workbench3_0.13.100.v20160506-0759.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.core.runtime_3.12.0.v20160606-1342.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="C:/eclipse/plugins/javax.inject_1.0.0.v20091030.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.osgi_3.11.2.v20161107-1947.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.osgi.compatibility.state_1.0.200.v20160504-1419.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.wst.jsdt.nashorn.extension_1.0.0.v201605131737.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.equinox.common_3.8.0.v20160509-1230.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.core.jobs_3.8.0.v20160509-0411.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.equinox.registry_3.6.100.v20160223-2218.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.equinox.preferences_3.6.1.v20160815-1406.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.core.contenttype_3.5.100.v20160418-1621.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.equinox.app_1.3.400.v20150715-1528.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.core.resources_3.11.1.v20161107-2032.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/iText-2.1.5.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/hamcrest-core-1.3.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/jcommon-1.0.23.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/jfreechart-1.0.19-experimental.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/jfreechart-1.0.19-swt.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/jfreechart-1.0.19.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/jfreesvg-2.0.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/junit-4.11.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/orsoncharts-1.4-eval-nofx.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/orsonpdf-1.6-eval.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/servlet.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/swtgraphics2d.jar" todir="${dir.jarfile}/VCGTViewer_lib"/>
     </target>
 </project>

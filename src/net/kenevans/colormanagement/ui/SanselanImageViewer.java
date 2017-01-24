@@ -30,6 +30,7 @@ import javax.swing.JSeparator;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 import net.kenevans.colormanagement.misc.AboutBoxEvansPanel;
 import net.kenevans.colormanagement.model.ICCProfileModel;
@@ -798,6 +799,16 @@ public class SanselanImageViewer extends JFrame
     public static void main(String[] args) {
         final SanselanImageViewer app = new SanselanImageViewer();
         final String fileName = args.length == 0 ? null : args[0];
+
+        try {
+            // Set window decorations
+            JFrame.setDefaultLookAndFeelDecorated(true);
+
+            // Set the native look and feel
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch(Throwable t) {
+            Utils.excMsg("ERror setting Look & Feel", t);
+        }
 
         // Make the job run in the AWT thread
         SwingUtilities.invokeLater(new Runnable() {

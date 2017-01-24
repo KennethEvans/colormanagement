@@ -28,6 +28,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -54,7 +55,7 @@ import net.kenevans.imagemodel.utils.Utils;
  */
 public class VCGTViewer extends JFrame
 {
-    public static final boolean USE_START_FILE_NAME = true;
+    public static final boolean USE_START_FILE_NAME = false;
     private static final long serialVersionUID = 1L;
     private static final String title = "ICC VCGT Table Viewer";
     // private static final String DEFAULT_PROFILE =
@@ -389,33 +390,30 @@ public class VCGTViewer extends JFrame
 
     private void addProfileToChart(Profile profile, int iSeries, int nSeries) {
         try {
-            double[][] table = null;
+            double[][] yVals = null;
             ICCProfileModel profileModel = profile.getProfileModel();
             Integer gammaType = profileModel.getVcgtGammaType();
             if(gammaType != null) {
                 if(gammaType == 0) {
                     // Table
-                    table = profileModel.getVcgtTable();
+                    yVals = profileModel.getVcgtTable();
                 } else {
                     // Formula
-                    table = profileModel.getVcgtFormulaTable();
+                    yVals = profileModel.getVcgtFormulaTable();
                 }
             } else {
-                table = emptyTable;
+                if(profile.isChecked()) {
+                    Utils.errMsg("VCGT table is not available for "
+                        + profile.getFile().getName());
+                }
+                yVals = emptyTable;
             }
-            if(table == null) {
-                // if(profile.isChecked()) {
-                // Utils.errMsg("VCGT table is not available for "
-                // + profile.getFile().getName());
-                // }
-                table = emptyTable;
-            }
-            if(table.length == 0) {
+            if(yVals.length == 0) {
                 Utils.errMsg("VCGT table is empty");
-                table = emptyTable;
+                yVals = emptyTable;
             }
-            int nComponents = table.length;
-            int nEntries = table[0].length;
+            int nComponents = yVals.length;
+            int nEntries = yVals[0].length;
 
             // Generate the x values
             double[][] xVals = new double[1][nEntries];
@@ -449,14 +447,17 @@ public class VCGTViewer extends JFrame
 
             // Create the series
             int seriesStart = dataset.getSeriesCount();
-            // System.out.println("seriesNum=" + iSeries + " nSeries=" + nSeries
-            // + " val=" + val + " seriesStart=" + seriesStart);
+            // DEBUG
+            System.out.println("seriesNum=" + iSeries + " nSeries=" + nSeries
+                + " val=" + val + " seriesStart=" + seriesStart
+                + " nComponents=" + nComponents);
             XYSeries[] seriesArray = new XYSeries[nComponents];
             for(int i = 0; i < nComponents; i++) {
                 XYSeries series = seriesArray[i];
-                series = new XYSeries("Series " + (i + 1));
+                series = new XYSeries("Series " + (seriesStart + i + 1));
+                System.out.println(series.getKey());
                 for(int j = 0; j < nEntries; j++) {
-                    series.add(xVals[0][j], table[i][j]);
+                    series.add(xVals[0][j], yVals[i][j]);
                 }
                 dataset.addSeries(series);
                 if(nComponents == 1) {
@@ -633,6 +634,16 @@ public class VCGTViewer extends JFrame
      */
     public static void main(String[] args) {
         final VCGTViewer app = new VCGTViewer();
+
+        try {
+            // Set window decorations
+            JFrame.setDefaultLookAndFeelDecorated(true);
+
+            // Set the native look and feel
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch(Throwable t) {
+            Utils.excMsg("ERror setting Look & Feel", t);
+        }
 
         // Make the job run in the AWT thread
         SwingUtilities.invokeLater(new Runnable() {
