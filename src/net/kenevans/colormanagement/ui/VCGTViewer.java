@@ -79,7 +79,7 @@ public class VCGTViewer extends JFrame
     // private String defaultPath =
     // "C:/Users/evans/Documents/Visual Studio Projects/Xcalib";
     private static final int WIDTH = 600;
-    private static final int HEIGHT = 875;
+    private static final int HEIGHT = 700;
     public static final String LS = System.getProperty("line.separator");
     public static final double[][] emptyTable = new double[1][0];
 
