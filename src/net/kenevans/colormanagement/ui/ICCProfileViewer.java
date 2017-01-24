@@ -17,6 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 import net.kenevans.colormanagement.misc.AboutBoxEvansPanel;
 import net.kenevans.colormanagement.model.ICCProfileModel;
@@ -29,10 +30,10 @@ import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 
 public class ICCProfileViewer extends JFrame
 {
-    public static final boolean USE_START_FILE_NAME = true;
+    public static final boolean USE_START_FILE_NAME = false;
     private static final long serialVersionUID = 1L;
     private static final String TITLE = "ICC Profile Viewer";
-    // private static final String DEFAULT_PROFILE =
+    // private static final String DEFAULT_PROFILE =DEFAULT_PROFILE
     // "C:/Windows/System32/spool/drivers/color/AlienwareCustom.icm";
     // private static final String DEFAULT_PROFILE =
     // "C:/Windows/System32/spool/drivers/color/Cosmos-2016-12-13-ColorMunki.icm";
@@ -50,8 +51,8 @@ public class ICCProfileViewer extends JFrame
     private String defaultPath = "C:/Windows/System32/spool/drivers/color";
     // private String defaultPath =
     // "C:/Users/evans/Documents/Visual Studio Projects/Xcalib";
-    private static final int WIDTH = 600;
-    private static final int HEIGHT = 875;
+    private static final int WIDTH = 500;
+    private static final int HEIGHT = 600;
     public static final String LS = System.getProperty("line.separator");
 
     private ICCProfileModel profileModel = new ICCProfileModel();
@@ -183,7 +184,7 @@ public class ICCProfileViewer extends JFrame
     /**
      * Loads new data.
      * 
-     * @param fileName
+     * @param data
      */
     private void loadData(byte[] data) {
         if(data == null) {
@@ -411,6 +412,16 @@ public class ICCProfileViewer extends JFrame
      */
     public static void main(String[] args) {
         final ICCProfileViewer app = new ICCProfileViewer();
+
+        try {
+            // Set window decorations
+            JFrame.setDefaultLookAndFeelDecorated(true);
+
+            // Set the native look and feel
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch(Throwable t) {
+            Utils.excMsg("ERror setting Look & Feel", t);
+        }
 
         // Make the job run in the AWT thread
         SwingUtilities.invokeLater(new Runnable() {
