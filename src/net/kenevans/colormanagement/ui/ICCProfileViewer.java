@@ -23,6 +23,7 @@ import javax.swing.UIManager;
 
 import net.kenevans.colormanagement.misc.AboutBoxEvansPanel;
 import net.kenevans.colormanagement.model.ICCProfileModel;
+import net.kenevans.core.utils.ImageUtils;
 import net.kenevans.imagemodel.utils.Utils;
 import net.kenevans.jfreechart.jfreechartutils.PlotXY;
 
@@ -345,6 +346,9 @@ public class ICCProfileViewer extends JFrame
         app.run(title);
         JFrame frame = app.getFrame();
         frame.setSize(new Dimension(WIDTH, WIDTH));
+        // Set the icon
+        ImageUtils.setIconImageFromResource(frame,
+            "/resources/VCGT Viewer.256x256.png");
     }
 
     /**
@@ -424,6 +428,9 @@ public class ICCProfileViewer extends JFrame
         app.run(title);
         JFrame frame = app.getFrame();
         frame.setSize(new Dimension(WIDTH, WIDTH));
+        // Set the icon
+        ImageUtils.setIconImageFromResource(frame,
+            "/resources/VCGT Viewer.256x256.png");
     }
 
     private void showIccProfileInfo() {
@@ -481,6 +488,10 @@ public class ICCProfileViewer extends JFrame
             this.setTitle(TITLE);
             this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             // frame.setLocationRelativeTo(null);
+
+            // Set the icon
+            ImageUtils.setIconImageFromResource(this,
+                "/resources/ICC Profile Viewer.256x256.png");
 
             // Has to be done here. The menus are not part of the JPanel.
             initMenus();

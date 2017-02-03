@@ -6,5 +6,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/net.kenevans.jfreechart"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/net.kenevans.jfreechart.utils"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/net.kenevans.core.utils"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

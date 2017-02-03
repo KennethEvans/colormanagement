@@ -43,6 +43,7 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 import net.kenevans.colormanagement.misc.AboutBoxEvansPanel;
 import net.kenevans.colormanagement.model.ICCProfileModel;
+import net.kenevans.core.utils.ImageUtils;
 import net.kenevans.imagemodel.utils.Utils;
 
 /**
@@ -261,6 +262,10 @@ public class VCGTViewer extends JFrame
             this.setTitle(title);
             this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             // frame.setLocationRelativeTo(null);
+
+            // Set the icon
+            ImageUtils.setIconImageFromResource(this,
+                "/resources/VCGT Viewer.256x256.png");
 
             // Has to be done here. The menus are not part of the JPanel.
             initMenus();

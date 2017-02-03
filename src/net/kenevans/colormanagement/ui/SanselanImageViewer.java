@@ -34,6 +34,7 @@ import javax.swing.UIManager;
 
 import net.kenevans.colormanagement.misc.AboutBoxEvansPanel;
 import net.kenevans.colormanagement.model.ICCProfileModel;
+import net.kenevans.core.utils.ImageUtils;
 import net.kenevans.imagemodel.ImageModel;
 import net.kenevans.imagemodel.ScrolledImagePanel;
 import net.kenevans.imagemodel.utils.Utils;
@@ -114,7 +115,8 @@ public class SanselanImageViewer extends JFrame
                     Rectangle newRectangle = new Rectangle();
                     newRectangle.setFrameFromDiagonal(mouseStart, mouseCur);
                     setClipRectangle(newRectangle);
-                    if(useStatusBar || statusBar != null || getImage() == null) {
+                    if(useStatusBar || statusBar != null
+                        || getImage() == null) {
                         int x = (int)(ev.getX() / zoom);
                         int y = (int)(ev.getY() / zoom);
                         int width = (int)(newRectangle.width / zoom);
@@ -233,8 +235,8 @@ public class SanselanImageViewer extends JFrame
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 try {
-                    java.awt.Desktop.getDesktop().browse(
-                        java.net.URI.create(HELP_URL));
+                    java.awt.Desktop.getDesktop()
+                        .browse(java.net.URI.create(HELP_URL));
                 } catch(IOException ex) {
                     Utils.excMsg("Cannot open help contents", ex);
                 }
@@ -246,8 +248,9 @@ public class SanselanImageViewer extends JFrame
         menuItem.setText("About");
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                JOptionPane.showMessageDialog(null, new AboutBoxEvansPanel(
-                    title), "About", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null,
+                    new AboutBoxEvansPanel(title), "About",
+                    JOptionPane.PLAIN_MESSAGE);
             }
         });
         menu.add(menuItem);
@@ -302,6 +305,10 @@ public class SanselanImageViewer extends JFrame
             this.setTitle(title);
             this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             // frame.setLocationRelativeTo(null);
+
+            // Set the icon
+            ImageUtils.setIconImageFromResource(this,
+                "/resources/Sanselan Image Viewer.256x256.png");
 
             // Has to be done here. The menus are not part of the JPanel.
             initMenus();
@@ -554,8 +561,8 @@ public class SanselanImageViewer extends JFrame
      * @throws ImageReadException
      * @throws IOException
      */
-    public static String getMetadataInfo(File file) throws ImageReadException,
-        IOException {
+    public static String getMetadataInfo(File file)
+        throws ImageReadException, IOException {
         String info = "";
         // Get all metadata stored in EXIF format (ie. from JPEG or TIFF).
         // org.w3c.dom.Node node = Sanselan.getMetadataObsolete(imageBytes);
@@ -594,9 +601,9 @@ public class SanselanImageViewer extends JFrame
         // if(item instanceof TiffImageMetadata.Item) {
         // TiffImageMetadata.Item item1 = (TiffImageMetadata.Item)items
         // .get(i);
-        // info += "  TIFF " + item1 + LS;
+        // info += " TIFF " + item1 + LS;
         // } else {
-        // info += "  " + item + LS;
+        // info += " " + item + LS;
         // }
         // }
         // }
@@ -691,8 +698,8 @@ public class SanselanImageViewer extends JFrame
      * @throws ImageReadException
      * @throws IOException
      */
-    public static String getImageInfo(File file) throws ImageReadException,
-        IOException {
+    public static String getImageInfo(File file)
+        throws ImageReadException, IOException {
         String info = "";
         ImageInfo imageInfo = Sanselan.getImageInfo(file);
         if(imageInfo == null) {

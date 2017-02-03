@@ -2,45 +2,57 @@
 <project default="create_run_jar" name="Create Runnable Jar for Project net.kenevans.colormanagement with libraries in sub-folder">
     <!--this file was created by Eclipse Runnable JAR Export Wizard-->
     <!--ANT 1.7 is required                                        -->
+    <!--define folder properties-->
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="${dir.buildfile}/.."/>
+    <property name="dir.jarfile" value="C:/Deploy/Sanselan Image Viewer"/>
     <target name="create_run_jar">
-        <jar destfile="C:/Deploy/Color Management/SanselanImageViewer.jar">
+        <jar destfile="${dir.jarfile}/SanselanImageViewer.jar">
             <manifest>
                 <attribute name="Main-Class" value="net.kenevans.colormanagement.ui.SanselanImageViewer"/>
-                <attribute name="Class-Path" value=". SanselanImageViewer_lib/sanselan-0.97-incubator.jar SanselanImageViewer_lib/org.eclipse.ui_3.103.0.v20120521-2329.jar SanselanImageViewer_lib/org.eclipse.swt_3.100.0.v4233d.jar SanselanImageViewer_lib/org.eclipse.swt.win32.win32.x86_3.100.0.v4233d.jar SanselanImageViewer_lib/org.eclipse.jface_3.8.0.v20120521-2329.jar SanselanImageViewer_lib/org.eclipse.core.commands_3.6.1.v20120521-2329.jar SanselanImageViewer_lib/org.eclipse.ui.workbench_3.103.0.v20120530-1824.jar SanselanImageViewer_lib/org.eclipse.e4.ui.workbench3_0.12.0.v20120521-2329.jar SanselanImageViewer_lib/org.eclipse.core.runtime_3.8.0.v20120521-2346.jar SanselanImageViewer_lib/org.eclipse.osgi_3.8.0.v20120529-1548.jar SanselanImageViewer_lib/org.eclipse.equinox.common_3.6.100.v20120522-1841.jar SanselanImageViewer_lib/org.eclipse.core.jobs_3.5.200.v20120521-2346.jar SanselanImageViewer_lib/runtime_registry_compatibility.jar SanselanImageViewer_lib/org.eclipse.equinox.registry_3.5.200.v20120522-1841.jar SanselanImageViewer_lib/org.eclipse.equinox.preferences_3.5.0.v20120522-1841.jar SanselanImageViewer_lib/org.eclipse.core.contenttype_3.4.200.v20120523-2004.jar SanselanImageViewer_lib/org.eclipse.equinox.app_1.3.100.v20120522-1841.jar SanselanImageViewer_lib/org.eclipse.core.resources_3.8.0.v20120522-2034.jar SanselanImageViewer_lib/gnujaxp.jar SanselanImageViewer_lib/iText-2.1.5.jar SanselanImageViewer_lib/jcommon-1.0.16.jar SanselanImageViewer_lib/jfreechart-1.0.13-experimental.jar SanselanImageViewer_lib/jfreechart-1.0.13-swt.jar SanselanImageViewer_lib/jfreechart-1.0.13.jar SanselanImageViewer_lib/junit.jar SanselanImageViewer_lib/servlet.jar SanselanImageViewer_lib/swtgraphics2d.jar SanselanImageViewer_lib/jfreechart-1.0.13-source.zip"/>
+                <attribute name="Class-Path" value=". SanselanImageViewer_lib/sanselan-0.97-incubator.jar SanselanImageViewer_lib/org.eclipse.ui_3.108.1.v20160929-1045.jar SanselanImageViewer_lib/org.eclipse.swt_3.105.2.v20161122-0613.jar SanselanImageViewer_lib/org.eclipse.swt.win32.win32.x86_3.105.2.v20161122-0613.jar SanselanImageViewer_lib/org.eclipse.jface_3.12.1.v20160923-1528.jar SanselanImageViewer_lib/org.eclipse.core.commands_3.8.0.v20160316-1921.jar SanselanImageViewer_lib/org.eclipse.ui.workbench_3.108.2.v20161025-2029.jar SanselanImageViewer_lib/org.eclipse.e4.ui.workbench3_0.13.100.v20160506-0759.jar SanselanImageViewer_lib/org.eclipse.core.runtime_3.12.0.v20160606-1342.jar SanselanImageViewer_lib/javax.inject_1.0.0.v20091030.jar SanselanImageViewer_lib/org.eclipse.osgi_3.11.2.v20161107-1947.jar SanselanImageViewer_lib/org.eclipse.osgi.compatibility.state_1.0.200.v20160504-1419.jar SanselanImageViewer_lib/org.eclipse.wst.jsdt.nashorn.extension_1.0.0.v201605131737.jar SanselanImageViewer_lib/org.eclipse.equinox.common_3.8.0.v20160509-1230.jar SanselanImageViewer_lib/org.eclipse.core.jobs_3.8.0.v20160509-0411.jar SanselanImageViewer_lib/org.eclipse.equinox.registry_3.6.100.v20160223-2218.jar SanselanImageViewer_lib/org.eclipse.equinox.preferences_3.6.1.v20160815-1406.jar SanselanImageViewer_lib/org.eclipse.core.contenttype_3.5.100.v20160418-1621.jar SanselanImageViewer_lib/org.eclipse.equinox.app_1.3.400.v20150715-1528.jar SanselanImageViewer_lib/org.eclipse.core.resources_3.11.1.v20161107-2032.jar SanselanImageViewer_lib/iText-2.1.5.jar SanselanImageViewer_lib/hamcrest-core-1.3.jar SanselanImageViewer_lib/jcommon-1.0.23.jar SanselanImageViewer_lib/jfreechart-1.0.19-experimental.jar SanselanImageViewer_lib/jfreechart-1.0.19-swt.jar SanselanImageViewer_lib/jfreechart-1.0.19.jar SanselanImageViewer_lib/jfreesvg-2.0.jar SanselanImageViewer_lib/junit-4.11.jar SanselanImageViewer_lib/orsoncharts-1.4-eval-nofx.jar SanselanImageViewer_lib/orsonpdf-1.6-eval.jar SanselanImageViewer_lib/servlet.jar SanselanImageViewer_lib/swtgraphics2d.jar SanselanImageViewer_lib/org.eclipse.core.filesystem_1.6.1.v20161113-2349.jar SanselanImageViewer_lib/org.eclipse.ui.ide_3.12.2.v20161115-1450.jar SanselanImageViewer_lib/org.eclipse.ui.views_3.8.101.v20160816-1954.jar"/>
             </manifest>
-            <fileset dir="C:/eclipseWorkspaces/Work/net.kenevans.colormanagement/bin"/>
-            <fileset dir="C:/eclipseWorkspaces/Work/net.kenevans.imagemodel/bin"/>
-            <fileset dir="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart.utils/bin"/>
+            <fileset dir="${dir.buildfile}/bin"/>
+            <fileset dir="${dir.workspace}/net.kenevans.imagemodel/bin"/>
+            <fileset dir="${dir.workspace}/net.kenevans.jfreechart.utils/bin"/>
+            <fileset dir="${dir.workspace}/net.kenevans.core.utils/bin"/>
         </jar>
-        <delete dir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <mkdir dir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.apache.sanselan/sanselan-0.97-incubator.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.ui_3.103.0.v20120521-2329.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.swt_3.100.0.v4233d.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.swt.win32.win32.x86_3.100.0.v4233d.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.jface_3.8.0.v20120521-2329.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.core.commands_3.6.1.v20120521-2329.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.ui.workbench_3.103.0.v20120530-1824.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.e4.ui.workbench3_0.12.0.v20120521-2329.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.core.runtime_3.8.0.v20120521-2346.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.osgi_3.8.0.v20120529-1548.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.equinox.common_3.6.100.v20120522-1841.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.core.jobs_3.5.200.v20120521-2346.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.core.runtime.compatibility.registry_3.5.100.v20120521-2346/runtime_registry_compatibility.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.equinox.registry_3.5.200.v20120522-1841.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.equinox.preferences_3.5.0.v20120522-1841.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.core.contenttype_3.4.200.v20120523-2004.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.equinox.app_1.3.100.v20120522-1841.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipse/plugins/org.eclipse.core.resources_3.8.0.v20120522-2034.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart/gnujaxp.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart/iText-2.1.5.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart/jcommon-1.0.16.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart/jfreechart-1.0.13-experimental.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart/jfreechart-1.0.13-swt.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart/jfreechart-1.0.13.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart/junit.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart/servlet.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart/swtgraphics2d.jar" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
-        <copy file="C:/eclipseWorkspaces/Work/net.kenevans.jfreechart/jfreechart-1.0.13-source.zip" todir="C:/Deploy/Color Management/SanselanImageViewer_lib"/>
+        <delete dir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <mkdir dir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.apache.sanselan/sanselan-0.97-incubator.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.ui_3.108.1.v20160929-1045.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.swt_3.105.2.v20161122-0613.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.swt.win32.win32.x86_3.105.2.v20161122-0613.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.jface_3.12.1.v20160923-1528.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.core.commands_3.8.0.v20160316-1921.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.ui.workbench_3.108.2.v20161025-2029.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.e4.ui.workbench3_0.13.100.v20160506-0759.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.core.runtime_3.12.0.v20160606-1342.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/javax.inject_1.0.0.v20091030.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.osgi_3.11.2.v20161107-1947.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.osgi.compatibility.state_1.0.200.v20160504-1419.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.wst.jsdt.nashorn.extension_1.0.0.v201605131737.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.equinox.common_3.8.0.v20160509-1230.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.core.jobs_3.8.0.v20160509-0411.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.equinox.registry_3.6.100.v20160223-2218.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.equinox.preferences_3.6.1.v20160815-1406.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.core.contenttype_3.5.100.v20160418-1621.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.equinox.app_1.3.400.v20150715-1528.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.core.resources_3.11.1.v20161107-2032.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/iText-2.1.5.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/hamcrest-core-1.3.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/jcommon-1.0.23.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/jfreechart-1.0.19-experimental.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/jfreechart-1.0.19-swt.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/jfreechart-1.0.19.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/jfreesvg-2.0.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/junit-4.11.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/orsoncharts-1.4-eval-nofx.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/orsonpdf-1.6-eval.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/servlet.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="${dir.workspace}/net.kenevans.jfreechart/swtgraphics2d.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.core.filesystem_1.6.1.v20161113-2349.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.ui.ide_3.12.2.v20161115-1450.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
+        <copy file="C:/eclipse/plugins/org.eclipse.ui.views_3.8.101.v20160816-1954.jar" todir="${dir.jarfile}/SanselanImageViewer_lib"/>
     </target>
 </project>
