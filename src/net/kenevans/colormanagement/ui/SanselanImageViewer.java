@@ -59,6 +59,11 @@ import org.apache.sanselan.icc.IccProfileParser;
  */
 public class SanselanImageViewer extends JFrame
 {
+    private static final String NAME = "Sanselan Image Viewer";
+    private static final String AUTHOR = "Written by Kenneth Evans, Jr.";
+    private static final String COPYRIGHT = "Copyright (c) 2012-2017 Kenneth Evans";
+    private static final String COMPANY = "kenevans.net";
+
     private static final String FILENAME = "C:/users/evans/Pictures/Image Tests/ICC Profile/D7A_0670.jpg";
 
     public static final boolean USE_GUI = true;
@@ -66,7 +71,7 @@ public class SanselanImageViewer extends JFrame
     private static final boolean USE_STATUS_BAR = true;
     public static final String LS = System.getProperty("line.separator");
     private static final long serialVersionUID = 1L;
-    private static final String title = "Test Sanselan";
+    private static final String TITLE = NAME;
     private static final int WIDTH = 600;
     private static final int HEIGHT = 800;
     private static final int MAIN_PANE_DIVIDER_LOCATION = HEIGHT / 3;
@@ -249,8 +254,8 @@ public class SanselanImageViewer extends JFrame
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 JOptionPane.showMessageDialog(null,
-                    new AboutBoxEvansPanel(title), "About",
-                    JOptionPane.PLAIN_MESSAGE);
+                    new AboutBoxEvansPanel(TITLE, AUTHOR, COMPANY, COPYRIGHT),
+                    "About", JOptionPane.PLAIN_MESSAGE);
             }
         });
         menu.add(menuItem);
@@ -302,7 +307,7 @@ public class SanselanImageViewer extends JFrame
             // Create and set up the window.
             // JFrame.setDefaultLookAndFeelDecorated(true);
             // UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            this.setTitle(title);
+            this.setTitle(TITLE);
             this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             // frame.setLocationRelativeTo(null);
 

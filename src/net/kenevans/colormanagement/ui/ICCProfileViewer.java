@@ -33,9 +33,14 @@ import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 
 public class ICCProfileViewer extends JFrame
 {
+    private static final String NAME = "ICC Profile Viewer";
+    private static final String AUTHOR = "Written by Kenneth Evans, Jr.";
+    private static final String COPYRIGHT = "Copyright (c) 2012-2017 Kenneth Evans";
+    private static final String COMPANY = "kenevans.net";
+
     public static final boolean USE_START_FILE_NAME = false;
     private static final long serialVersionUID = 1L;
-    private static final String TITLE = "ICC Profile Viewer";
+    private static final String TITLE = NAME;
     // private static final String DEFAULT_PROFILE =DEFAULT_PROFILE
     // "C:/Windows/System32/spool/drivers/color/AlienwareCustom.icm";
     // private static final String DEFAULT_PROFILE =
@@ -187,8 +192,8 @@ public class ICCProfileViewer extends JFrame
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 JOptionPane.showMessageDialog(null,
-                    new AboutBoxEvansPanel(TITLE), "About",
-                    JOptionPane.PLAIN_MESSAGE);
+                    new AboutBoxEvansPanel(TITLE, AUTHOR, COMPANY, COPYRIGHT),
+                    "About", JOptionPane.PLAIN_MESSAGE);
             }
         });
         menu.add(menuItem);

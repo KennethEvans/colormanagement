@@ -56,9 +56,14 @@ import net.kenevans.imagemodel.utils.Utils;
  */
 public class VCGTViewer extends JFrame
 {
+    private static final String NAME = "ICC VCGT Table Viewer";
+    private static final String AUTHOR = "Written by Kenneth Evans, Jr.";
+    private static final String COPYRIGHT = "Copyright (c) 2012-2017 Kenneth Evans";
+    private static final String COMPANY = "kenevans.net";
+
     public static final boolean USE_START_FILE_NAME = false;
     private static final long serialVersionUID = 1L;
-    private static final String title = "ICC VCGT Table Viewer";
+    private static final String TITLE = NAME;
     // private static final String DEFAULT_PROFILE =
     // "C:/Windows/System32/spool/drivers/color/AlienwareCustom.icm";
     // private static final String DEFAULT_PROFILE =
@@ -244,8 +249,8 @@ public class VCGTViewer extends JFrame
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 JOptionPane.showMessageDialog(null,
-                    new AboutBoxEvansPanel(title), "About",
-                    JOptionPane.PLAIN_MESSAGE);
+                    new AboutBoxEvansPanel(TITLE, AUTHOR, COMPANY, COPYRIGHT),
+                    "About", JOptionPane.PLAIN_MESSAGE);
             }
         });
         menu.add(menuItem);
@@ -259,7 +264,7 @@ public class VCGTViewer extends JFrame
             // Create and set up the window.
             // JFrame.setDefaultLookAndFeelDecorated(true);
             // UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            this.setTitle(title);
+            this.setTitle(TITLE);
             this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             // frame.setLocationRelativeTo(null);
 

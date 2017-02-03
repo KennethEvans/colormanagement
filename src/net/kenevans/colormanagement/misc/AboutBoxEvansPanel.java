@@ -17,7 +17,7 @@ public class AboutBoxEvansPanel extends JPanel
   private static final String DEFAULT_NAME = "Java Application";
   private static final String DEFAULT_AUTHOR = "Written by Kenneth Evans, Jr.";
   private static final String DEFAULT_COPYRIGHT =
-    "Copyright (c) 2012 Kenneth Evans";
+    "Copyright (c) 2017 Kenneth Evans";
   private static final String DEFAULT_COMPANY = "kenevans.net";
 
 
