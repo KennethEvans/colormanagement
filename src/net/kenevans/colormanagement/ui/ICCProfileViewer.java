@@ -353,7 +353,7 @@ public class ICCProfileViewer extends JFrame
         frame.setSize(new Dimension(WIDTH, WIDTH));
         // Set the icon
         ImageUtils.setIconImageFromResource(frame,
-            "/resources/VCGT Viewer.256x256.png");
+            "/resources/ICC Profile Viewer.256x256.png");
     }
 
     /**

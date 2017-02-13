@@ -4,11 +4,11 @@ This project consists of several Java applications for doing color management.
 
 **Sanselan Image Viewer**
 
-Reads ICC Profiles from images.
+Reads ICC Profiles from images.  Also shows metadata and image information.
 
 **ICC Profile Viewer**
 
-Shows ICC profile information for an ICC profile file.
+Shows ICC profile information for an ICC profile file. Displays both Video Card Gamma Table (VCGT) and Tone Response Curve (TRC) plots if present.
 
 **VCGT Viewer**
 
