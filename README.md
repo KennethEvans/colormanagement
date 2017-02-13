@@ -1,6 +1,6 @@
 # net.kenevans.colormanagement
 
-This project consists of several Java applications for doing color management.
+This Eclipse project consists of several Java applications for doing color management.
 
 **Sanselan Image Viewer**
 
