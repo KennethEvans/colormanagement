@@ -14,4 +14,4 @@ Shows ICC profile information for an ICC profile file. Displays both Video Card 
 
 Shows VCGT curves for a set of ICC profile files.
 
-See https://kennethevans.github.io for more information and also to see other projects from the same author.
+For this and more projects from the same author see https://kennethevans.github.io.
