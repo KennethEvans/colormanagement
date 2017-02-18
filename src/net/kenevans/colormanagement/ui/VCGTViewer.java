@@ -8,7 +8,6 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -81,7 +80,7 @@ public class VCGTViewer extends JFrame
     // "C:/Windows/System32/spool/drivers/color/xRite-2010-07-08-6500-2.2-090.ICC";
 
     /** URL for online help. */
-    private static final String HELP_URL = "http://kenevans.net";
+    // private static final String HELP_URL = "http://kenevans.net";
 
     private String defaultPath = "C:/Windows/System32/spool/drivers/color";
     // private String defaultPath =
@@ -232,19 +231,19 @@ public class VCGTViewer extends JFrame
         menu.setText("Help");
         menuBar.add(menu);
 
-        menuItem = new JMenuItem();
-        menuItem.setText("Contents");
-        menuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
-                try {
-                    java.awt.Desktop.getDesktop()
-                        .browse(java.net.URI.create(HELP_URL));
-                } catch(IOException ex) {
-                    Utils.excMsg("Cannot open help contents", ex);
-                }
-            }
-        });
-        menu.add(menuItem);
+        // menuItem = new JMenuItem();
+        // menuItem.setText("Contents");
+        // menuItem.addActionListener(new ActionListener() {
+        // public void actionPerformed(ActionEvent ae) {
+        // try {
+        // java.awt.Desktop.getDesktop()
+        // .browse(java.net.URI.create(HELP_URL));
+        // } catch(IOException ex) {
+        // Utils.excMsg("Cannot open help contents", ex);
+        // }
+        // }
+        // });
+        // menu.add(menuItem);
 
         menuItem = new JMenuItem();
         menuItem.setText("About");

@@ -69,7 +69,7 @@ public class SanselanImageViewer extends JFrame
     private static final String FILENAME = "C:/users/evans/Pictures/Image Tests/ICC Profile/D7A_0670.jpg";
 
     public static final boolean USE_GUI = true;
-    public static final boolean USE_START_FILE_NAME = true;
+    public static final boolean USE_START_FILE_NAME = false;
     private static final boolean USE_STATUS_BAR = true;
     public static final String LS = System.getProperty("line.separator");
     private static final long serialVersionUID = 1L;
@@ -84,7 +84,7 @@ public class SanselanImageViewer extends JFrame
     private File file;
 
     /** URL for online help. */
-    private static final String HELP_URL = "http://kenevans.net";
+    // private static final String HELP_URL = "http://kenevans.net";
 
     private Container contentPane = this.getContentPane();
     private JTextArea textArea;
@@ -237,19 +237,19 @@ public class SanselanImageViewer extends JFrame
         menu.setText("Help");
         menuBar.add(menu);
 
-        menuItem = new JMenuItem();
-        menuItem.setText("Contents");
-        menuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
-                try {
-                    java.awt.Desktop.getDesktop()
-                        .browse(java.net.URI.create(HELP_URL));
-                } catch(IOException ex) {
-                    Utils.excMsg("Cannot open help contents", ex);
-                }
-            }
-        });
-        menu.add(menuItem);
+        // menuItem = new JMenuItem();
+        // menuItem.setText("Contents");
+        // menuItem.addActionListener(new ActionListener() {
+        // public void actionPerformed(ActionEvent ae) {
+        // try {
+        // java.awt.Desktop.getDesktop()
+        // .browse(java.net.URI.create(HELP_URL));
+        // } catch(IOException ex) {
+        // Utils.excMsg("Cannot open help contents", ex);
+        // }
+        // }
+        // });
+        // menu.add(menuItem);
 
         menuItem = new JMenuItem();
         menuItem.setText("About");

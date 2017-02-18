@@ -7,7 +7,6 @@ import java.awt.color.ProfileDataException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -56,7 +55,7 @@ public class ICCProfileViewer extends JFrame
     /** URL for online help. */
     // private static final String HELP_URL =
     // "file:///C:/Users/evans/Documents/Web%20Pages/Local/localHomePage.html";
-    private static final String HELP_URL = "http://kenevans.net";
+    // private static final String HELP_URL = "http://kenevans.net";
 
     private String defaultPath = "C:/Windows/System32/spool/drivers/color";
     // private String defaultPath =
@@ -175,19 +174,19 @@ public class ICCProfileViewer extends JFrame
         menu.setText("Help");
         menuBar.add(menu);
 
-        menuItem = new JMenuItem();
-        menuItem.setText("Contents");
-        menuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
-                try {
-                    java.awt.Desktop.getDesktop()
-                        .browse(java.net.URI.create(HELP_URL));
-                } catch(IOException ex) {
-                    Utils.excMsg("Cannot open help contents", ex);
-                }
-            }
-        });
-        menu.add(menuItem);
+        // menuItem = new JMenuItem();
+        // menuItem.setText("Contents");
+        // menuItem.addActionListener(new ActionListener() {
+        // public void actionPerformed(ActionEvent ae) {
+        // try {
+        // java.awt.Desktop.getDesktop()
+        // .browse(java.net.URI.create(HELP_URL));
+        // } catch(IOException ex) {
+        // Utils.excMsg("Cannot open help contents", ex);
+        // }
+        // }
+        // });
+        // menu.add(menuItem);
 
         menuItem = new JMenuItem();
         menuItem.setText("About");
