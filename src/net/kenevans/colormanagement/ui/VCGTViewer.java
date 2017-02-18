@@ -41,8 +41,8 @@ import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-import net.kenevans.colormanagement.misc.AboutBoxEvansPanel;
 import net.kenevans.colormanagement.model.ICCProfileModel;
+import net.kenevans.core.utils.AboutBoxPanel;
 import net.kenevans.core.utils.ImageUtils;
 import net.kenevans.imagemodel.utils.Utils;
 
@@ -57,6 +57,8 @@ import net.kenevans.imagemodel.utils.Utils;
 public class VCGTViewer extends JFrame
 {
     private static final String NAME = "ICC VCGT Table Viewer";
+    private static final String VERSION = "1.0.0";
+    private static final String HELP_TITLE = NAME + " " + VERSION;
     private static final String AUTHOR = "Written by Kenneth Evans, Jr.";
     private static final String COPYRIGHT = "Copyright (c) 2012-2017 Kenneth Evans";
     private static final String COMPANY = "kenevans.net";
@@ -249,7 +251,7 @@ public class VCGTViewer extends JFrame
         menuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 JOptionPane.showMessageDialog(null,
-                    new AboutBoxEvansPanel(TITLE, AUTHOR, COMPANY, COPYRIGHT),
+                    new AboutBoxPanel(HELP_TITLE, AUTHOR, COMPANY, COPYRIGHT),
                     "About", JOptionPane.PLAIN_MESSAGE);
             }
         });
