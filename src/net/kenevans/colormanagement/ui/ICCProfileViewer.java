@@ -478,7 +478,7 @@ public class ICCProfileViewer extends JFrame
             this.setVisible(true);
             loadData(data);
         } catch(Throwable t) {
-            Utils.excMsg("Error running ICCProfileViewer", t);
+            Utils.excMsg("Error running " + NAME, t);
         }
     }
 
@@ -528,7 +528,7 @@ public class ICCProfileViewer extends JFrame
             // Set the native look and feel
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch(Throwable t) {
-            Utils.excMsg("ERror setting Look & Feel", t);
+            Utils.excMsg("Error setting Look & Feel", t);
         }
 
         // Make the job run in the AWT thread
